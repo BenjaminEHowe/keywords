@@ -1,0 +1,18 @@
+{
+    "facebook":{
+        "icon":"https://twitter.com/facebook/profile_image",
+        "url":"https://www.facebook.com/"
+    },
+    "flickr":{
+        "icon":"https://twitter.com/flickr/profile_image",
+        "url":"https://www.flickr.com/"
+    },
+    "raspberry pi":{
+        "icon":"https://twitter.com/raspberry_pi/profile_image",
+        "url":"https://www.raspberrypi.org/"
+    },
+    "twitter":{
+        "icon":"https://twitter.com/twitter/profile_image",
+        "url":"https://twitter.com/"
+    }
+}
