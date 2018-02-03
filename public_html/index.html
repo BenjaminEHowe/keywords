@@ -137,7 +137,11 @@
                 promises.push(
                     fetch(file).then(function(r) {
                         if (!r.ok) {
-                            throw Error(r.url.split("/").slice(-1)[0] + " " + r.statusText);
+                            if (r.status == 404) {
+                            throw Error("Keyword list " + r.url.split("/").slice(-1)[0] + " not found!");
+                            } else {
+                                throw Error(r.url.split("/").slice(-1)[0] + ": " + r.status + ": " + r.statusText);
+                            }
                         }
                         return r.json()
                     }));
