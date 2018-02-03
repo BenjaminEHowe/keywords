@@ -1,4 +1,16 @@
 {
+    "adobe":{
+        "icon":"https://twitter.com/Adobe/profile_image",
+        "url":"https://www.adobe.com/"
+    },
+    "amazon":{
+        "icon":"https://twitter.com/amazon/profile_image",
+        "url":"https://www.amazon.com/"
+    },
+    "apple":{
+        "icon":"https://twitter.com/Apple/profile_image",
+        "url":"https://www.apple.com/"
+    },
     "facebook":{
         "icon":"https://twitter.com/facebook/profile_image",
         "url":"https://www.facebook.com/"
@@ -7,12 +19,48 @@
         "icon":"https://twitter.com/flickr/profile_image",
         "url":"https://www.flickr.com/"
     },
+    "linkedin":{
+        "icon":"https://twitter.com/LinkedIn/profile_image",
+        "url":"https://www.linkedin.com/"
+    },
+    "microsoft":{
+        "icon":"https://twitter.com/Microsoft/profile_image",
+        "url":"https://www.microsoft.com/"
+    },
+    "pinterest":{
+        "icon":"https://twitter.com/Pinterest/profile_image",
+        "url":"https://www.pinterest.com/"
+    },
     "raspberry pi":{
         "icon":"https://twitter.com/raspberry_pi/profile_image",
         "url":"https://www.raspberrypi.org/"
     },
+    "reddit":{
+        "icon":"https://twitter.com/reddit/profile_image",
+        "url":"https://www.reddit.com/"
+    },
+    "tumblr":{
+        "icon":"https://twitter.com/tumblr/profile_image",
+        "url":"https://www.tumblr.com/"
+    },
     "twitter":{
         "icon":"https://twitter.com/twitter/profile_image",
         "url":"https://twitter.com/"
+    },
+    "vimeo":{
+        "icon":"https://twitter.com/vimeo/profile_image",
+        "url":"https://vimeo.com/"
+    },
+    "wikipedia":{
+        "icon":"https://twitter.com/Wikipedia/profile_image",
+        "url":"https://www.wikipedia.org/"
+    },
+    "yahoo":{
+        "icon":"https://twitter.com/yahoo/profile_image",
+        "url":"https://yahoo.com/"
+    },
+    "youtube":{
+        "icon":"https://twitter.com/youtube/profile_image",
+        "url":"https://www.youtube.com/"
     }
 }
