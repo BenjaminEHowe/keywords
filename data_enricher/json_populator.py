@@ -15,19 +15,24 @@ def main():
 	input = open(input_file_name,"r")
 	parsed_input = json.loads(input.read())
 	for key, value in parsed_input.items():
-		parsed_input[key]["title"] = getTitle(value)
+		getTitle(value,key)
 	output = open(output_file_name,"w")
 	output.write(json.dumps(parsed_input, indent=4, sort_keys=True))
 
-def getTitle(entry):
+def getTitle(entry,key):
 	url = entry["url"]
 	result = requests.get(url)
+	if "title" in entry:
+		return
 	title_search = re.search(r'<title.*?>(.*?)</title>',result.text)
+	title = key
 	if not title_search == None :
 		title = title_search.group(1)
-		return title
 	else :
-		return url
+		title = url
+
+	if not title.lower() == key.lower():
+		entry["title"] = title
 
 if __name__ == "__main__":
     main()
