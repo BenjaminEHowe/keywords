@@ -81,13 +81,14 @@
         }
 
         function updateResults() {
-            query = document.getElementById("searchbox").value;
+            var query = document.getElementById("searchbox").value;
+            var queryLC = query.toLowerCase();
             
             // generate a list of matching results
             var results = [];
             for (var i = keywords.length - 1; i >= 0; i--) { // most specific 
                 for (var key in keywords[i]) {
-                    if (key.startsWith(query)) {
+                    if (key.startsWith(queryLC)) {
                         results.push({"keyword": key, "result": keywords[i][key]});
                     }
                 }
@@ -100,7 +101,7 @@
             }
 
             // if there are no results, suggest a Google search
-            if (results.length == 0) {
+            if (results.length == 0 && query != "") {
                 var cardDiv = document.createElement("div");
                 var cardBody = document.createElement("div");
                 cardDiv.classList.add("card");
