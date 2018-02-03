@@ -1,0 +1,55 @@
+{
+    "bb":{
+        "icon":"/img/blackboard.png",
+        "title":"Blackboard",
+        "url":"https://bb.reading.ac.uk/"
+    },
+    "campuscard":{
+         "title":"Campus Card Portal",
+         "url":"https://cardfinance.reading.ac.uk/WebCentre/"
+    },
+    "ec":{
+        "title":"Extenuating Circumstances",
+        "url":"http://student.reading.ac.uk/essentials/_the-important-stuff/rules-and-regulations/extenuating-circumstances.aspx"
+    },
+    "fees":{
+        "title":"Student Payments",
+        "url":"https://www.webpay.reading.ac.uk/studentpayments/"
+    },
+    "freepc":{
+        "title":"Free PC Finder",
+        "url":"http://www.reading.ac.uk/internal/student/academic-support/stdserv-pc-facilities.aspx"
+    },
+    "freeroom":{
+        "title":"Free Room Finder",
+        "url":"http://www.reading.ac.uk/free-room-finder/"
+    },
+    "itstatus":{
+        "title":"IT Status",
+        "url":"https://itsstatus.reading.ac.uk/"
+    },
+    "library":{
+        "title":"University of Reading Library",
+        "url":"https://www.reading.ac.uk/library/lib-home.aspx"
+    },
+    "mail":{
+        "icon":"https://twitter.com/outlook/profile_image",
+        "title":"Outlook Web Access",
+        "url":"https://outlook.office365.com/owa/"
+    },
+    "ndrive":{
+        "url":"https://netdrive.reading.ac.uk/"
+    },
+    "pastpapers":{
+        "title":"Past Papers",
+        "url":"https://www.reading.ac.uk/repol/"
+    },
+    "risis":{
+        "title":"RISIS Portal",
+        "url":"https://www.risisweb.reading.ac.uk/"
+    },
+    "timetable":{
+        "icon":"/img/cmisgo.png",
+        "url":"https://timetable.reading.ac.uk/"
+    }
+}

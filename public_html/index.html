@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha256-pS96pU17yq+gVu4KBQJi38VpSuKN7otMrDQprzf/DWY=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha256-5+02zu5UULQkO7w1GIr6vftCgMfFdZcAHeDtFnKZsBs=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         body {max-width:960px; margin:20px auto;}
         h1, h2 {text-align:center;}
@@ -18,7 +19,7 @@
         .card#selected a {color:#fff;}
     </style>
 </head>
-<body onkeypress="keyListener(event)">
+<body onkeydown="keyListener(event)">
     <h1>Keyword-based Search</h1>
     <h2>Created by <a href="https://www.bh96.uk/">Benjamin Howe</a> and <a href="https://github.com/emwebb">Ethen Webb</a></h2>
     <input type="text" id="searchbox" oninput="updateResults()">
@@ -30,21 +31,53 @@
             var cardBody = document.createElement("div");
             cardDiv.classList.add("card");
             cardBody.classList.add("card-body");
-            cardBody.setAttribute("data-url", json.url);
+            cardBody.setAttribute("data-url", json.result.url);
             cardBody.setAttribute("onclick", "window.location.assign(this.getAttribute('data-url'))");
-            cardBody.innerHTML = json.url;
+
+            var title = json.result.title || toTitleCase(json.keyword);
+            cardBody.innerHTML = "<strong>" + title + "</strong> (keyword <em>" + json.keyword + "</em>)";
+
             cardDiv.appendChild(cardBody);
             return cardDiv;
         }
 
         function keyListener(event) {
             switch (event.code) {
+                case "ArrowDown":
+                    try {
+                        var newSelected = document.getElementById("selected").nextSibling;
+                        if (newSelected != null) {
+                            document.getElementById("selected").id = "";
+                            newSelected.id = "selected";
+                        }
+                    } catch (e) {} // if no card is selected or there is no next card, do nothing
+                    break;
+
+                case "ArrowUp":
+                    try {
+                        var newSelected = document.getElementById("selected").previousSibling;
+                        if (newSelected != null) {
+                            document.getElementById("selected").id = "";
+                            newSelected.id = "selected";
+                        }
+                    } catch (e) {} // if no card is selected or there is no previous card, do nothing
+                    break;
+
                 case "Enter":
                     try {
                         window.location.assign(document.getElementById("selected").children[0].getAttribute("data-url"));
-                    } catch (e) {} // if no element is selected, do nothing
+                    } catch (e) {} // if no card is selected, do nothing
+                    break;
+                
+                case "Escape":
+                    document.getElementById("searchbox").value = "";
+                    updateResults();
                     break;
             }
+        }
+
+        function toTitleCase(str) {
+            return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()});
         }
 
         function updateResults() {
@@ -55,7 +88,7 @@
             for (var i = keywords.length - 1; i >= 0; i--) { // most specific 
                 for (var key in keywords[i]) {
                     if (key.startsWith(query)) {
-                        results.push(keywords[i][key]);
+                        results.push({"keyword": key, "result": keywords[i][key]});
                     }
                 }
             }
@@ -85,17 +118,36 @@
             }
         }
 
-        // focus on the search box
-        document.getElementById("searchbox").focus();
+        // global keyword array
+        var keywords = [];
 
-        // get the global keywords
-        var keywords = []
-        fetch("/json/global.json").then(function(response) {
-            return response.json();
-        }).then(function(json) {
-            keywords.push(json);
-            updateResults();
-        });
+        // redirect if required
+        if (window.location.pathname == "/") {
+            window.location.assign(window.location.href + "global");
+        } else {
+            // focus on the search box
+            document.getElementById("searchbox").focus();
+
+            // get the keyword file(s)
+            var keywordFiles = window.location.pathname.substr(1).split("/");
+            var promises = [];
+            for (var i = 0; i < keywordFiles.length; i++) {
+                file = "/json/" + keywordFiles[i] + ".json";
+                promises.push(
+                    fetch(file).then(function(r) {
+                        if (!r.ok) {
+                            throw Error(r.url.split("/").slice(-1)[0] + " " + r.statusText);
+                        }
+                        return r.json()
+                    }));
+            }
+            Promise.all(promises).then(function(jsons) {
+                for (var i = 0; i < jsons.length; i++) {
+                    keywords.push(jsons[i]);
+                }
+                updateResults();
+            }).catch(function(e) {swal({icon: "error", title:e})});
+        }
     </script>
 </body>
 </html>
