@@ -1,10 +1,12 @@
 {
     "adobe":{
         "icon":"https://twitter.com/Adobe/profile_image",
+        "title":"Adobe: Creative, marketing and document management solutions",
         "url":"https://www.adobe.com/"
     },
     "amazon":{
         "icon":"https://twitter.com/amazon/profile_image",
+        "title":"Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more",
         "url":"https://www.amazon.com/"
     },
     "apple":{
@@ -21,10 +23,12 @@
     },
     "linkedin":{
         "icon":"https://twitter.com/LinkedIn/profile_image",
+        "title":"LinkedIn",
         "url":"https://www.linkedin.com/"
     },
     "microsoft":{
         "icon":"https://twitter.com/Microsoft/profile_image",
+        "title":"Microsoft - Official Home Page",
         "url":"https://www.microsoft.com/"
     },
     "pinterest":{
@@ -33,6 +37,7 @@
     },
     "raspberry pi":{
         "icon":"https://twitter.com/raspberry_pi/profile_image",
+        "title":"Raspberry Pi - Teach, Learn, and Make with Raspberry Pi",
         "url":"https://www.raspberrypi.org/"
     },
     "reddit":{
@@ -45,10 +50,12 @@
     },
     "twitter":{
         "icon":"https://twitter.com/twitter/profile_image",
+        "title":"Twitter. It's what's happening",
         "url":"https://twitter.com/"
     },
     "vimeo":{
         "icon":"https://twitter.com/vimeo/profile_image",
+        "title":"Vimeo | The high-quality home for video hosting and watching",
         "url":"https://vimeo.com/"
     },
     "wikipedia":{
