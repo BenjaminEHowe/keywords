@@ -8,6 +8,10 @@
          "title":"Campus Card Portal",
          "url":"https://cardfinance.reading.ac.uk/WebCentre/"
     },
+    "classification":{
+        "title":"Classification & Progression Framework",
+        "url":"https://www.reading.ac.uk/web/files/exams/UgClassification-post-2012.pdf"
+    },
     "ec":{
         "title":"Extenuating Circumstances",
         "url":"http://student.reading.ac.uk/essentials/_the-important-stuff/rules-and-regulations/extenuating-circumstances.aspx"
@@ -37,6 +41,10 @@
         "title":"Outlook Web Access",
         "url":"https://outlook.office365.com/owa/"
     },
+    "modules":{
+        "title":"Module Descriptions",
+        "url":"https://www.reading.ac.uk/modules/"
+    },
     "ndrive":{
         "url":"https://netdrive.reading.ac.uk/"
     },
@@ -51,5 +59,8 @@
     "timetable":{
         "icon":"/img/cmisgo.png",
         "url":"https://timetable.reading.ac.uk/"
+    },
+    "topdesk":{
+        "url":"https://uor.topdesk.net/"
     }
 }
