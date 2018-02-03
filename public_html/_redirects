@@ -1,2 +1,5 @@
+# allow proper access to JSON files
+/json/*  /json/:splat	200
+
 # run as a single page application
-/*    /index.html   200
+/*    /index.html   	200
