@@ -5,22 +5,79 @@
     <title>Keyword Search</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/esm/popper.min.js" integrity="sha256-tWDaEmVqcf3+EBjNCtfZSFaWGT++lmVJH9KY64BJU+U=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha256-pS96pU17yq+gVu4KBQJi38VpSuKN7otMrDQprzf/DWY=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha256-5+02zu5UULQkO7w1GIr6vftCgMfFdZcAHeDtFnKZsBs=" crossorigin="anonymous"></script>
     <style>
         body {max-width:960px; margin:20px auto;}
         h1, h2 {text-align:center;}
         h1 {font-size:3rem;}
         h2 {font-size:1.5rem;}
-        input {display:block; font-size:3rem; margin:0 auto; text-align:center; width:50%;}
+        input {display:block; font-size:3rem; margin:0 auto; text-align:center; width:75%;}
+        .card {margin-top:20px;}
+        .card.selected {background-color:#398ee7; color:#fff;}
+        .card.selected a {color:#fff;}
     </style>
 </head>
 <body>
     <h1>Keyword-based Search</h1>
     <h2>Created by <a href="https://www.bh96.uk/">Benjamin Howe</a> and <a href="https://github.com/emwebb">Ethen Webb</a></h2>
-    <input type="text" id="searchbox">
+    <input type="text" id="searchbox" oninput="updateResults()">
+    <div id="results">
+    </div>
     <script>
+        function updateResults() {
+            query = document.getElementById("searchbox").value;
+            
+            // generate a list of matching results
+            var results = [];
+            for (var i = keywords.length - 1; i >= 0; i--) { // most specific 
+                for (var key in keywords[i]) {
+                    if (key.startsWith(query)) {
+                        results.push(keywords[i][key]);
+                    }
+                }
+            }
+
+            // write them out to the DOM
+            document.getElementById("results").innerHTML = ""; // clear the old results
+            for (var i = 0; i < results.length; i++) {
+                var resultDiv = document.createElement("div");
+                var resultBody = document.createElement("div");
+                resultDiv.classList.add("card");
+                resultBody.classList.add("card-body");
+                resultBody.innerHTML = "<a href='" + results[i].url + "'>" + results[i].url + "</a>";
+                resultDiv.appendChild(resultBody);
+                document.getElementById("results").appendChild(resultDiv);
+            }
+
+            // if there are no results, suggest a Google search
+            if (results.length == 0) {
+                var resultDiv = document.createElement("div");
+                var resultBody = document.createElement("div");
+                resultDiv.classList.add("card");
+                resultBody.classList.add("card-body");
+                resultBody.innerHTML = "No results found. <a href='https://www.google.co.uk/search?q=" + query + "'>Search for " + query + " on Google</a>?";
+                resultDiv.appendChild(resultBody);
+                document.getElementById("results").appendChild(resultDiv);
+            }
+
+            // mark the top result as "selected"
+            if (query != "") {
+                    document.getElementById("results").children[0].classList.add("selected");
+            }
+        }
+
+        // focus on the search box
         document.getElementById("searchbox").focus();
+
+        // get the global keywords
+        var keywords = []
+        fetch("/json/global.json").then(function(response) {
+            return response.json();
+        }).then(function(json) {
+            keywords.push(json);
+            updateResults();
+        });
     </script>
 </body>
 </html>
