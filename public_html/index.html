@@ -13,18 +13,40 @@
         h1 {font-size:3rem;}
         h2 {font-size:1.5rem;}
         input {display:block; font-size:3rem; margin:0 auto; text-align:center; width:75%;}
-        .card {margin-top:20px;}
-        .card.selected {background-color:#398ee7; color:#fff;}
-        .card.selected a {color:#fff;}
+        .card {cursor:pointer; margin-top:20px;}
+        .card#selected {background-color:#398ee7; color:#fff;}
+        .card#selected a {color:#fff;}
     </style>
 </head>
-<body>
+<body onkeypress="keyListener(event)">
     <h1>Keyword-based Search</h1>
     <h2>Created by <a href="https://www.bh96.uk/">Benjamin Howe</a> and <a href="https://github.com/emwebb">Ethen Webb</a></h2>
     <input type="text" id="searchbox" oninput="updateResults()">
     <div id="results">
     </div>
     <script>
+        function jsonToCard(json) {
+            var cardDiv = document.createElement("div");
+            var cardBody = document.createElement("div");
+            cardDiv.classList.add("card");
+            cardBody.classList.add("card-body");
+            cardBody.setAttribute("data-url", json.url);
+            cardBody.setAttribute("onclick", "window.location.assign(this.getAttribute('data-url'))");
+            cardBody.innerHTML = json.url;
+            cardDiv.appendChild(cardBody);
+            return cardDiv;
+        }
+
+        function keyListener(event) {
+            switch (event.code) {
+                case "Enter":
+                    try {
+                        window.location.assign(document.getElementById("selected").children[0].getAttribute("data-url"));
+                    } catch (e) {} // if no element is selected, do nothing
+                    break;
+            }
+        }
+
         function updateResults() {
             query = document.getElementById("searchbox").value;
             
@@ -41,29 +63,25 @@
             // write them out to the DOM
             document.getElementById("results").innerHTML = ""; // clear the old results
             for (var i = 0; i < results.length; i++) {
-                var resultDiv = document.createElement("div");
-                var resultBody = document.createElement("div");
-                resultDiv.classList.add("card");
-                resultBody.classList.add("card-body");
-                resultBody.innerHTML = "<a href='" + results[i].url + "'>" + results[i].url + "</a>";
-                resultDiv.appendChild(resultBody);
-                document.getElementById("results").appendChild(resultDiv);
+                document.getElementById("results").appendChild(jsonToCard(results[i]));
             }
 
             // if there are no results, suggest a Google search
             if (results.length == 0) {
-                var resultDiv = document.createElement("div");
-                var resultBody = document.createElement("div");
-                resultDiv.classList.add("card");
-                resultBody.classList.add("card-body");
-                resultBody.innerHTML = "No results found. <a href='https://www.google.co.uk/search?q=" + query + "'>Search for " + query + " on Google</a>?";
-                resultDiv.appendChild(resultBody);
-                document.getElementById("results").appendChild(resultDiv);
+                var cardDiv = document.createElement("div");
+                var cardBody = document.createElement("div");
+                cardDiv.classList.add("card");
+                cardBody.classList.add("card-body");
+                cardBody.setAttribute("data-url", "https://www.google.co.uk/search?q=" + query);
+                cardBody.setAttribute("onclick", "window.location.assign(this.getAttribute('data-url'))");
+                cardBody.innerHTML = "No results found. Search for \"" + query + "\" on Google?";
+                cardDiv.appendChild(cardBody);
+                document.getElementById("results").appendChild(cardDiv);
             }
 
             // mark the top result as "selected"
             if (query != "") {
-                    document.getElementById("results").children[0].classList.add("selected");
+                document.getElementById("results").children[0].id = "selected";
             }
         }
 
