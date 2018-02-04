@@ -34,6 +34,7 @@
     },
     "library":{
         "title":"University of Reading Library",
+        "searchUrl":"https://rdg.ent.sirsidynix.net.uk/client/en_GB/library/search/results/?q=",
         "url":"https://www.reading.ac.uk/library/lib-home.aspx"
     },
     "mail":{
