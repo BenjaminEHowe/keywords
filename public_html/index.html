@@ -193,7 +193,10 @@
 
         // redirect if required
         if (window.location.pathname == "/") {
-            window.location.assign(window.location.href + "global");
+            fetch("https://api.ipify.org?format=json").then(r => r.json()).then(function(json) {
+                console.log('My IP address is ', json.ip);
+                window.location.assign(window.location.href + "global");
+            });
         } else {
             // focus on the search box
             document.getElementById("searchbox").focus();
