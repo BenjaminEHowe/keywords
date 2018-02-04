@@ -235,7 +235,8 @@
                     fetch(file).then(function(r) {
                         if (!r.ok) {
                             if (r.status == 404) {
-                            throw Error("keyword list " + r.url.split("/").slice(-1)[0] + " not found!");
+                                swal({icon: "error", title:"Error: keyword list " + r.url.split("/").slice(-1)[0] + " not found!"});
+                                return null;
                             } else {
                                 throw Error(r.url.split("/").slice(-1)[0] + ": " + r.status + ": " + r.statusText);
                             }
