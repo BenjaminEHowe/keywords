@@ -1,0 +1,19 @@
+{
+    "bb":{
+        "icon":"/img/blackboard.png",
+        "title":"Blackboard",
+        "url":"https://blackboard.brunel.ac.uk/"
+    },
+    "timetable":{
+         "title":"Timetable",
+         "url":"https://teaching.brunel.ac.uk/SWS-1718/login.aspx"
+    },
+    "webmail":{
+        "title":"Webmail",
+        "url":"https://outlook.office365.com/brunel.ac.uk"
+    },
+    "term_dates":{
+        "title":"Term Dates",
+        "url":"https://www.brunel.ac.uk/about/term-dates"
+    }
+}
