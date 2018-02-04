@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha256-pS96pU17yq+gVu4KBQJi38VpSuKN7otMrDQprzf/DWY=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha256-5+02zu5UULQkO7w1GIr6vftCgMfFdZcAHeDtFnKZsBs=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ipaddr.js/1.6.0/ipaddr.min.js" integrity="sha256-s2po33i/NHUA0YZSFryC/VVTmvUHOJu9rWYTXF6v2Jc=" crossorigin="anonymous"></script>
     <style>
         body {max-width:960px; margin:20px auto;}
         h1, h2 {text-align:center;}
@@ -97,6 +98,20 @@
                     document.getElementById("searchbox").value = "";
                     updateResults();
                     break;
+            }
+        }
+
+        function redirectIfRequred(json) {
+            json = json.sort(function(a, b) {return a.cidr > b.cidr}); // sort by cidr
+            var matched = false;
+            for (var i = 0; i < json.length; i++) {
+                if (ip.match(ipaddr.parse(json[i].range), json[i].cidr)) {
+                    matched = true;
+                    window.location.assign(window.location.href + json[i].path);
+                }
+            }
+            if (!matched) {
+                window.location.assign(window.location.href + "global");
             }
         }
 
@@ -190,12 +205,20 @@
 
         // global keyword array
         var keywords = [];
+        var ip;
 
         // redirect if required
         if (window.location.pathname == "/") {
             fetch("https://api.ipify.org?format=json").then(r => r.json()).then(function(json) {
-                console.log('My IP address is ', json.ip);
-                window.location.assign(window.location.href + "global");
+                ip = ipaddr.parse(json.ip);
+            }).then(function() {
+                if (ip instanceof ipaddr.IPv4) {
+                    fetch("/json/organisations4.json").then(r => r.json()).then(redirectIfRequred);
+                } else if (ip instanceof ipaddr.IPv6) {
+                    fetch("/json/organisations6.json").then(r => r.json()).then(redirectIfRequied);
+                } else {
+                    window.location.assign(window.location.href + "global");
+                }
             });
         } else {
             // focus on the search box
