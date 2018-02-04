@@ -15,6 +15,12 @@
         "searchUrl":"https://www.apple.com/search/",
         "url":"https://www.apple.com/"
     },
+    "bbc":{
+        "icon":"/img/bbc.png",
+        "searchUrl":"https://www.bbc.co.uk/search?q=",
+        "title":"BBC",
+        "url":"https://www.bbc.co.uk/"
+    },
     "facebook":{
         "icon":"https://twitter.com/facebook/profile_image",
         "searchUrl":"https://www.facebook.com/search/top/?q=",
