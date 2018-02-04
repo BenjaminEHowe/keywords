@@ -35,7 +35,17 @@
             cardBody.setAttribute("onclick", "window.location.assign(this.getAttribute('data-url'))");
 
             var title = json.result.title || toTitleCase(json.keyword);
-            cardBody.innerHTML = "<strong>" + title + "</strong> (keyword <em>" + json.keyword + "</em>)";
+            cardBody.innerHTML = "<strong>" + title + "</strong>";
+
+            // if there's a keyword, put it at the end of the card
+            if (json.keyword != null) {
+                cardBody.innerHTML += "(keyword <em>" + json.keyword + "</em>)";
+            }
+
+            // if there's an icon, put it at the start of the card
+            if (json.result.icon != null) {
+                cardBody.innerHTML = "<img src='" + json.result.icon + "' alt='" + json.result.title + "' style='margin-right:10px;' />" + cardBody.innerHTML;
+            }
 
             cardDiv.appendChild(cardBody);
             return cardDiv;
@@ -94,23 +104,17 @@
                 }
             }
 
+            // if there are no results, suggest a Google search
+            if (results.length == 0 && query != "") {
+                results.push({"result": {
+                    "title": "No results found. Search for \"" + query + "\" on Google?",
+                    "url": "https://www.google.co.uk/search?q=" + query}});
+            }
+
             // write them out to the DOM
             document.getElementById("results").innerHTML = ""; // clear the old results
             for (var i = 0; i < results.length; i++) {
                 document.getElementById("results").appendChild(jsonToCard(results[i]));
-            }
-
-            // if there are no results, suggest a Google search
-            if (results.length == 0 && query != "") {
-                var cardDiv = document.createElement("div");
-                var cardBody = document.createElement("div");
-                cardDiv.classList.add("card");
-                cardBody.classList.add("card-body");
-                cardBody.setAttribute("data-url", "https://www.google.co.uk/search?q=" + query);
-                cardBody.setAttribute("onclick", "window.location.assign(this.getAttribute('data-url'))");
-                cardBody.innerHTML = "No results found. Search for \"" + query + "\" on Google?";
-                cardDiv.appendChild(cardBody);
-                document.getElementById("results").appendChild(cardDiv);
             }
 
             // mark the top result as "selected"

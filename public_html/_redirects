@@ -1,5 +1,8 @@
 # allow proper access to JSON files
-/json/*  /json/:splat	200
+/json/*						/json/:splat				200
+
+# give _global its proper name
+/json/global.json			/json/_global.json			200
 
 # run as a single page application
-/*    /index.html   	200
+/*  						/index.html					200
