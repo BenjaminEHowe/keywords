@@ -20,9 +20,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ipaddr.js/1.6.0/ipaddr.min.js" integrity="sha256-s2po33i/NHUA0YZSFryC/VVTmvUHOJu9rWYTXF6v2Jc=" crossorigin="anonymous"></script>
     <style>
         body {max-width:960px; margin:20px auto;}
-        h1, h2 {text-align:center;}
+        h1, h2, h3 {text-align:center;}
         h1 {font-size:3rem;}
         h2 {font-size:1.5rem;}
+        h3 {font-size:1rem;}
         input {display:block; font-size:3rem; margin:0 auto; text-align:center; width:75%;}
         .card {cursor:pointer; margin-top:20px;}
         .card img {height:auto; margin-right:0.9375rem; width:32px;}
@@ -33,6 +34,7 @@
 <body onkeydown="keyListener(event)">
     <h1>Keyword-based Search</h1>
     <h2>Created by <a href="https://www.bh96.uk/">Benjamin Howe</a> and <a href="https://github.com/emwebb">Ethen Webb</a></h2>
+    <h3>Open source, contribute via <a href="https://github.com/BenjaminEHowe/keywords">GitHub!</a></h3>
     <input type="text" id="searchbox" oninput="updateResults()">
     <div id="results">
     </div>
