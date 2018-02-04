@@ -1,0 +1,24 @@
+{
+    "cdnjs":{
+        "title":"cdnjs",
+        "searchUrl":"https://cdnjs.com?q=",
+        "url":"https://cdnjs.com/"
+    },
+    "caniuse":{
+        "title":"Can I use",
+        "searchUrl":"https://caniuse.com/#search=",
+        "url":"https://caniuse.com/"
+    },
+    "github":{
+        "icon":"https://twitter.com/github/profile_image",
+        "title":"GitHub",
+        "searchUrl":"https://github.com/search?q=",
+        "url":"https://github.com/"
+    },
+    "stackoverflow":{
+        "icon":"https://twitter.com/StackOverflow/profile_image",
+        "title":"Stack Overflow",
+        "searchUrl":"https://stackoverflow.com/search?q=",
+        "url":"https://stackoverflow.com/"
+    }
+}
