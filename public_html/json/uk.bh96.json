@@ -9,6 +9,11 @@
         "searchUrl":"https://caniuse.com/#search=",
         "url":"https://caniuse.com/"
     },
+    "caping":{
+        "icon":"/img/ca.svg",
+        "title":"CA App Synthetic Monitor (Ping)",
+        "url":"https://asm.ca.com/en/ping.php"
+    },
     "github":{
         "icon":"https://twitter.com/github/profile_image",
         "title":"GitHub",
