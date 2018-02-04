@@ -1,17 +1,12 @@
 {
-    "adobe":{
-        "icon":"https://twitter.com/Adobe/profile_image",
-        "searchUrl":"https://www.adobe.com/search.html#q=foo",
-        "url":"https://www.adobe.com/"
-    },
     "amazon":{
-        "icon":"https://twitter.com/amazon/profile_image",
+        "icon":"/img/amazon.svg",
         "title":"Amazon.com",
         "searchUrl":"https://www.amazon.com/s/field-keywords=",
         "url":"https://www.amazon.com/"
     },
     "apple":{
-        "icon":"https://twitter.com/Apple/profile_image",
+        "icon":"/img/apple.svg",
         "searchUrl":"https://www.apple.com/search/",
         "url":"https://www.apple.com/"
     },
@@ -22,12 +17,12 @@
         "url":"https://www.bbc.co.uk/"
     },
     "facebook":{
-        "icon":"https://twitter.com/facebook/profile_image",
+        "icon":"/img/facebook.svg",
         "searchUrl":"https://www.facebook.com/search/top/?q=",
         "url":"https://www.facebook.com/"
     },
     "flickr":{
-        "icon":"https://twitter.com/flickr/profile_image",
+        "icon":"/img/flickr.svg",
         "searchUrl":"https://www.flickr.com/search/?text=",
         "url":"https://www.flickr.com/"
     },
