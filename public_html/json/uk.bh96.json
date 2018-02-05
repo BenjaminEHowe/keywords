@@ -1,29 +1,73 @@
 {
     "cdnjs":{
-        "title":"cdnjs",
         "searchUrl":"https://cdnjs.com?q=",
+        "title":"cdnjs",
         "url":"https://cdnjs.com/"
     },
     "caniuse":{
-        "title":"Can I use",
         "searchUrl":"https://caniuse.com/#search=",
+        "title":"Can I use",
         "url":"https://caniuse.com/"
+    },
+    "calendar":{
+        "icon":"https://www.google.com/images/icons/product/calendar-32.png",
+        "searchUrl":"https://calendar.google.com/calendar/r/search?q=",
+        "title":"Google Calendar",
+        "url":"https://calendar.google.com/calendar/r"
     },
     "caping":{
         "icon":"/img/ca.svg",
         "title":"CA App Synthetic Monitor (Ping)",
         "url":"https://asm.ca.com/en/ping.php"
     },
+    "docs":{
+        "icon":"https://www.google.com/images/icons/product/docs-32.png",
+        "searchUrl":"https://docs.google.com/document/?q=",
+        "title":"Google Docs",
+        "url":"https://docs.google.com/document/"
+    },
     "github":{
         "icon":"https://twitter.com/github/profile_image",
-        "title":"GitHub",
         "searchUrl":"https://github.com/search?q=",
+        "title":"GitHub",
         "url":"https://github.com/"
+    },
+    "jsonformatter":{
+        "title":"Online JSON Formatter & Validator",
+        "url":"https://jsonformatter.curiousconcept.com/"
+    },
+    "keep":{
+        "icon":"https://www.google.com/images/icons/product/keep-32.png",
+        "searchUrl":"https://keep.google.com/#search/text:",
+        "title":"Google Keep",
+        "url":"https://keep.google.com/"
+    },
+    "netlify":{
+        "icon":"/img/netlify.svg",
+        "searchUrl":"https://app.netlify.com/?search=",
+        "url":"https://app.netlify.com/"
+    },
+    "sheets":{
+        "icon":"https://www.google.com/images/icons/product/spreadsheets-32.png",
+        "searchUrl":"https://docs.google.com/spreadsheets/?q=",
+        "title":"Google Sheets",
+        "url":"https://docs.google.com/spreadsheets/"
+    },
+    "slides":{
+        "icon":"https://www.google.com/images/icons/product/presentations-32.png",
+        "searchUrl":"https://docs.google.com/presentation/?q=",
+        "title":"Google Slides",
+        "url":"https://docs.google.com/presentation/"
     },
     "stackoverflow":{
         "icon":"https://twitter.com/StackOverflow/profile_image",
-        "title":"Stack Overflow",
         "searchUrl":"https://stackoverflow.com/search?q=",
+        "title":"Stack Overflow",
         "url":"https://stackoverflow.com/"
+    },
+    "unigrades":{
+        "icon":"https://lh3.googleusercontent.com/CelKdFqNgZ1A5KRijxHHx9_A4rprMCYDcbugUFhVCsARHfotxTHbsfM3msKY3Mx21ug=w32",
+        "title":"UniGrades",
+        "url":"https://www.unigrades.co.uk/"
     }
 }

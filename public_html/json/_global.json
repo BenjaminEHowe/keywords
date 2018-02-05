@@ -26,11 +26,22 @@
         "searchUrl":"https://www.flickr.com/search/?text=",
         "url":"https://www.flickr.com/"
     },
+    "img":{
+        "searchUrl":"https://www.google.com/search?tbm=isch&q=",
+        "title":"Google Images",
+        "url":""
+    },
     "linkedin":{
         "icon":"https://twitter.com/LinkedIn/profile_image",
         "title":"LinkedIn",
         "searchUrl":"https://www.linkedin.com/search/results/index/?keywords=",
         "url":"https://www.linkedin.com/"
+    },
+    "maps":{
+        "icon":"https://www.google.com/images/icons/product/maps-32.png",
+        "searchUrl":"https://www.google.co.uk/maps/search/",
+        "title":"Google Maps",
+        "url":"https://www.google.co.uk/maps"
     },
     "microsoft":{
         "icon":"https://twitter.com/Microsoft/profile_image",
